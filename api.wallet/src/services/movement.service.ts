@@ -1,10 +1,10 @@
+import { IMovementRepository } from "./repositories/IMovement.repository";
+import { IBalanceRepository } from "./repositories/IBalance.repository";
+import { Movement } from "./repositories/model/movement";
+import { MovementCreateDto } from "../dtos/movement.dto";
 import { MovementType } from "../common/enums/movement-type";
 import { ApplicationException } from "../common/exceptions/application.exception";
 import { Balance } from "./repositories/model/balance";
-import { Movement } from "./repositories/model/movement";
-import { IMovementRepository } from './repositories/IMovement.repository';
-import { IBalanceRepository } from './repositories/IBalance.repository';
-import { MovementCreateDto } from "../dtos/movement.dto";
 
 export class MovementService {
     constructor(
@@ -56,5 +56,4 @@ export class MovementService {
             await this.movementRepository.store(entry as Movement);
         }
     }
-
-}    
+}

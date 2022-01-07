@@ -1,10 +1,8 @@
 import connector from "../../../../common/persistence/mssql.persistence";
-import { ISubscriptionRepository } from "../../ISubscription.repository";
 import { Subscription } from "../../model/subscription";
-
+import { ISubscriptionRepository } from "../../ISubscription.repository";
 
 export class SubscriptionMSSQLRepository implements ISubscriptionRepository {
- 
     public async find(id: number): Promise<Subscription | null> {
         const pool = await connector;
         const result = await pool.query`SELECT * FROM wallet_subscription WHERE id = ${id}`;

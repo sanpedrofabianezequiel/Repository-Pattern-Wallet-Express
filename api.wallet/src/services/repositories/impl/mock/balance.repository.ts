@@ -1,6 +1,6 @@
 import db from "../../../../common/persistence/mock.persistence";
-import { IBalanceRepository } from "../../IBalance.repository";
 import { Balance } from "../../model/balance";
+import { IBalanceRepository } from "../../IBalance.repository";
 
 export class BalanceMockRepository implements IBalanceRepository {
     public async find(id: number): Promise<Balance | null> {

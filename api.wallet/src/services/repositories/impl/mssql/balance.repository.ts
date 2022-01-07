@@ -1,7 +1,6 @@
 import connector from "../../../../common/persistence/mssql.persistence";
-import { IBalanceRepository } from "../../IBalance.repository";
 import { Balance } from "../../model/balance";
-
+import { IBalanceRepository } from "../../IBalance.repository";
 
 export class BalanceMSSQLRepository implements IBalanceRepository {
     public async find(id: number): Promise<Balance | null> {

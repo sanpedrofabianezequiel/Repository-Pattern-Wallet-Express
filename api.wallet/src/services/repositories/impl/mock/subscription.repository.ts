@@ -1,8 +1,8 @@
 import db from "../../../../common/persistence/mock.persistence";
-import { SubscriptionRepository } from "../../subscription.repository";
-import { Subscription } from "../../domain/subscription";
+import { ISubscriptionRepository } from "../../ISubscription.repository";
+import { Subscription } from "../../model/subscription";
 
-export class SubscriptionMockRepository implements SubscriptionRepository {
+export class SubscriptionMockRepository implements ISubscriptionRepository {
     public async find(id: number): Promise<Subscription | null> {
         const table = db.subscriptions as Subscription[];
         const result = table.find(x => x.id === id);

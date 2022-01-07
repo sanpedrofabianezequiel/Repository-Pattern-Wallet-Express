@@ -1,8 +1,8 @@
-import { GET, POST, route } from "awilix-express";
-import { Request, Response } from "express";
-import { BaseController } from "../common/controllers/base.controller";
-import { MovementCreateDto } from "../dtos/movement.dto";
-import { MovementService } from "../services/movemnt.service";
+import { Request, Response } from 'express';
+import { route, GET, POST } from "awilix-express";
+import { BaseController } from '../common/controllers/base.controller';
+import { MovementService } from '../services/movement.service';
+import { MovementCreateDto } from '../dtos/movement.dto';
 
 @route('/movements')
 export class MovementController extends BaseController {

@@ -1,39 +1,39 @@
 import express = require('express');
-import { asClass, createContainer } from "awilix";
-import { TestService } from './services/test.service';
-import { scopePerRequest } from 'awilix-express';
-import { SubscriptionMySQLRepository } from './services/repositories/impl/mysql/subscription.respository';
+import { createContainer, asClass } from "awilix";
+import { scopePerRequest } from "awilix-express";
+import { TestService } from "./services/test.service";
+import { SubscriptionMySQLRepository } from './services/repositories/impl/mysql/subscription.repository';
 import { SubscriptionService } from './services/subscription.service';
 import { MovementMySQLRepository } from './services/repositories/impl/mysql/movement.repository';
-import { BalanceMySQLRepository } from './services/repositories/impl/mysql/balance.repository';
-import { MovementService } from './services/movemnt.service';
+import { BalanceMysqlRepository } from './services/repositories/impl/mysql/balance.repository';
+import { MovementService } from './services/movement.service';
 import { SubscriptionMSSQLRepository } from './services/repositories/impl/mssql/subscription.repository';
-import { BalanceMSSQLRepository } from './services/repositories/impl/mssql/balance.repository';
 import { MovementMSSQLRepository } from './services/repositories/impl/mssql/movement.repository';
+import { BalanceMSSQLRepository } from './services/repositories/impl/mssql/balance.repository';
+import { SubscriptionMockRepository } from './services/repositories/impl/mock/subscription.repository';
 
-export default (app: express.Application)=>{
-    const container =  createContainer({
-        injectionMode:'CLASSIC'
+export default (app: express.Application): void => {
+    const container = createContainer({
+        injectionMode: 'CLASSIC'
     });
 
     container.register({
-        //repositories
-        /*subscriptionRepository : asClass(SubscriptionMySQLRepository).scoped(),
-        movementRepository:asClass(MovementMySQLRepository).scoped(),
-        balanceRepository:asClass(BalanceMySQLRepository).scoped(),
-        */
-        
+        // repositories
+        // subscriptionRepository: asClass(SubscriptionMockRepository).scoped(),
+        // movementRepository: asClass(MovementMSSQLRepository).scoped(),
+        // balanceRepository: asClass(BalanceMSSQLRepository).scoped(),
+        // subscriptionRepository: asClass(SubscriptionMSSQLRepository).scoped(),
+        // movementRepository: asClass(MovementMSSQLRepository).scoped(),
+        // balanceRepository: asClass(BalanceMSSQLRepository).scoped(),
+        subscriptionRepository: asClass(SubscriptionMySQLRepository).scoped(),
+        movementRepository: asClass(MovementMySQLRepository).scoped(),
+        balanceRepository: asClass(BalanceMysqlRepository).scoped(),
 
-        subscriptionRepository : asClass(SubscriptionMSSQLRepository).scoped(),
-        movementRepository:asClass(MovementMSSQLRepository).scoped(),
-        balanceRepository:asClass(BalanceMSSQLRepository).scoped(),
-
-
-        //Services //Mapiando depencias
-        subscriptionService:asClass(SubscriptionService).scoped(),
-        movementService:asClass(MovementService).scoped(),
-        testService : asClass(TestService).scoped()
+        // services
+        subscriptionService: asClass(SubscriptionService).scoped(),
+        movementService: asClass(MovementService).scoped(),
+        testService: asClass(TestService).scoped()
     });
 
     app.use(scopePerRequest(container));
-}
+};

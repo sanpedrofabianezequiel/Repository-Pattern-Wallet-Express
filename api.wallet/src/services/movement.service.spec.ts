@@ -1,10 +1,8 @@
-
+import { MovementService } from './movement.service';
 import { MovementMockRepository } from './repositories/impl/mock/movement.repository';
 import { BalanceMockRepository } from './repositories/impl/mock/balance.repository';
-import assert = require('assert');
-import { MovementService } from './movemnt.service';
 import { MovementCreateDto } from '../dtos/movement.dto';
-import { MovementType } from '../common/enums/movement-type';
+import assert = require('assert');
 
 const movementService = new MovementService(
     new MovementMockRepository(),
@@ -36,7 +34,7 @@ describe('Movement.Service', () => {
                     type: 1,
                     amount: 200
                 } as MovementCreateDto);
-            } catch (error :any) {
+            } catch (error) {
                 assert.equal(error.message, 'User does not have enough balance.');
             }
         });
@@ -45,10 +43,10 @@ describe('Movement.Service', () => {
             try {
                 await movementService.store({
                     user_id: 1,
-                    type: MovementType.outcome,
-                    amount: 100
+                    type: 9999,
+                    amount: 200
                 } as MovementCreateDto);
-            } catch (error:any) {
+            } catch (error) {
                 assert.equal(error.message, 'Invalid movement type supplied.');
             }
         });

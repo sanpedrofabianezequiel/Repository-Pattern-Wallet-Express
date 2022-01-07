@@ -1,7 +1,5 @@
 export class TestService {
-    
-    get():Date {
-        return new Date;
+    get(): Date {
+        return new Date();
     }
-    
 }
