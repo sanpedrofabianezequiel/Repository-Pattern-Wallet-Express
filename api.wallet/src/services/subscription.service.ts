@@ -1,5 +1,5 @@
-import { Subscription } from "./repositories/domain/subscription";
-import { SubscriptionRepository } from "./repositories/subscription.repository";
+import { Subscription } from "./repositories/model/subscription";
+import { SubscriptionRepository } from "./repositories/ISubscription.repository";
 import { SubscriptionCreateDto, SubscriptionUpdateDto } from '../dtos/subscription.dto';
 import { ApplicationException } from '../common/exceptions/application.exception';
 

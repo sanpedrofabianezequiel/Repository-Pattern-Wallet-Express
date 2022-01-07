@@ -1,6 +1,6 @@
 import createPool from '../../../../common/persistence/mysql.pesistence';
-import { Subscription } from '../../domain/subscription';
-import { SubscriptionRepository } from '../../subscription.repository';
+import { Subscription } from '../../model/subscription';
+import { SubscriptionRepository } from '../../ISubscription.repository';
 
 
 export class SubscriptionMySQLRepository  implements SubscriptionRepository{
